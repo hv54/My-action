@@ -12,7 +12,7 @@ on:
     branches:
       - master
     paths:
-      - '.github/workflows/openwrt-ci.yml'
+      - '.github/workflows/Build-Lean-lede.yml'
   schedule:
       - cron: 0 */4 * * *
 
