@@ -28,16 +28,16 @@ jobs:
 
     steps:
     
-      - name: Space cleanup  #准备环境
+      - name: Space cleanup
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          bash <(curl -fsSL https://raw.githubusercontent.com/hv54/My-action/master/lean-lede/prenv.sh)  #修改
+          bash <(curl -fsSL https://raw.githubusercontent.com/hv54/My-action/master/lean-lede/prenv.sh)
     
-      - name: Checkout               #检查
+      - name: Checkout               
         uses: actions/checkout@v2
         with:
-          repository: coolsnowwolf/lede   #修改
+          repository: coolsnowwolf/lede   
           
       - name: Download and Load custom configuration
         run: |
