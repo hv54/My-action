@@ -41,6 +41,9 @@ jobs:
           
       - name: Download and Load custom configuration
         run: |
+         cat >> feeds.conf.default <<EOF
+         src-git helloworld https://github.com/fw876/helloworld
+         EOF
          curl -fsSL https://raw.githubusercontent.com/hv54/My-action/master/lean-lede/x86_64/.config >.config
          bash <(curl -fsSL https://raw.githubusercontent.com/hv54/My-action/master/lean-lede/diy.sh)
          make defconfig
