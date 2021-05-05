@@ -6,7 +6,7 @@
 # 
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
-name: Build-Lean-lede
+name: OpenWrt
 on:
   push:
     branches:
@@ -57,9 +57,9 @@ jobs:
         run: |
           echo "src-git helloworld https://github.com/fw876/helloworld" >> feeds.conf.default
           ./scripts/feeds update -a
-          ./scripts/feeds install -a
-          make defconfig
+          ./scripts/feeds install -a          
           curl -fsSL https://raw.githubusercontent.com/hv54/My-action/master/lean-lede/x86_64/.config >.config
+          make defconfig
       
       - name: Make download package
         run: |
