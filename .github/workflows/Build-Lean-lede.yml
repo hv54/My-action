@@ -49,6 +49,7 @@ jobs:
         run: |
           echo "src-git xiaoqingfeng https://github.com/xiaoqingfengATGH/feeds-xiaoqingfeng" >> feeds.conf.default
           echo "src-git pw https://github.com/homelede/openwrt-passwall.git" >> feeds.conf.default
+          sed -i 's?coolsnowwolf/packages?xiaoqingfengATGH/feeds-packages?' ./feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a          
           curl -fsSL https://raw.githubusercontent.com/hv54/My-action/master/lean-lede/x86_64/.config >.config
