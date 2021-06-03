@@ -47,9 +47,17 @@ jobs:
           
       - name: Download and Load custom configuration
         run: |
+          sed -i 's?coolsnowwolf/packages?xiaoqingfengATGH/feeds-packages?' ./feeds.conf.default
+          sed -i 's?coolsnowwolf/luci?xiaoqingfengATGH/feeds-luci?' ./feeds.conf.default
+          sed -i 's?git.openwrt.org/feed/routing.git?github.com/xiaoqingfengATGH/k5-feeds-routing?' ./feeds.conf.default
+          sed -i 's?git.openwrt.org/feed/telephony.git?github.com/xiaoqingfengATGH/k5-feeds-telephony?' ./feeds.conf.default
+          sed -i 's?github.com/xiaoqingfengATGH/k5-feeds-telephony?git.openwrt.org/feed/telephony.git?' ./feeds.conf.default
           echo "src-git xiaoqingfeng https://github.com/xiaoqingfengATGH/feeds-xiaoqingfeng" >> feeds.conf.default
           echo "src-git pw https://github.com/homelede/openwrt-passwall.git" >> feeds.conf.default
-          sed -i 's?coolsnowwolf/packages?xiaoqingfengATGH/feeds-packages?' ./feeds.conf.default
+          echo "src-git lienol https://github.com/homelede/openwrt-package.git" >> feeds.conf.default
+          echo "src-git infinityfreedom https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git" >> feeds.conf.default
+          echo "src-git homeclash https://github.com/xiaoqingfengATGH/homeclash.git" >> feeds.conf.default
+          echo "src-git strongswanInDocker https://github.com/xiaoqingfengATGH/luci-app-strongswanInDocker.git" >> feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a          
           curl -fsSL https://raw.githubusercontent.com/hv54/My-action/master/lean-lede/x86_64/.config >.config
